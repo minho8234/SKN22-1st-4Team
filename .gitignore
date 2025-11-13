@@ -1,0 +1,14 @@
+# 파일 이름: .gitignore
+
+# Python 캐시 파일
+__pycache__/
+*.pyc
+
+# 가상 환경 폴더 (만약 'aip'가 프로젝트 폴더 안에 있다면)
+aip/
+
+# 민감한 환경 변수 파일
+.env
+
+# Streamlit secrets (로컬용)
+.streamlit/secrets.toml
