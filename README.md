@@ -49,28 +49,56 @@
 ### 프로젝트 구조
 
 ```bash
-SKN22-1st-4Team/
-├── Home.py                
-├── backend/                (모든 백엔드 로직 패키지)
-│   ├── db_manager.py     (DB 연결 관리)
-│   ├── search_queries.py (검색 관련 쿼리)
-│   ├── stats_queries.py  (통계 관련 쿼리)
-│   └── ...
-├── pages/                  (Streamlit 서브 페이지)
-│   ├── 1_🚀_프로젝트_소개.py
-│   ├── 2_🍋_상세_검색.py
-│   ├── 3_📊_분석_리포트.py
-│   ├── 4_🚗_부품_사전.py
-│   ├── 5_❓_FAQ & 문의.py
-│   ├── 6_✍️_회원가입.py     (★ 사이드바 숨김 처리)
-│   └── 7_⚙️_마이페이지.py   (★ 사이드바 숨김 처리)
-├── sql/                    (DB 스키마 및 데이터 로더)
-│   └── ...
-├── assets/                 (이미지 등 정적 파일)
-│   └── LemonScanner_diagram.png
-├── .streamlit/
-│   └── secrets.toml
-└── requirements.txt
+LemonScanner/
+│  .gitignore               # Git 버전 관리에서 제외할 파일 목록
+│  Home.py                  # Streamlit 앱의 메인(홈) 페이지
+│  LICENSE                  # 프로젝트 라이선스 (MIT)
+│  README.md                # 프로젝트 설명 (현재 파일)
+│  requirements.txt         # Python 의존성 패키지 목록
+│
+├─.github                   # GitHub 저장소 관련 설정
+│  └─ISSUE_TEMPLATE
+│          custom.md
+│
+├─.streamlit                # Streamlit 배포 및 환경 설정
+│      secrets.toml         # (★중요) DB 접속 정보, API 키 등 민감 정보
+│
+├─assets                    # ERD, 스크린샷, 로고 등 정적 파일
+│  │  LemonScanner_diagram.png # 1. 프로젝트 ERD
+│  │
+│  ├─suv_parts             # '부품 사전' 페이지용 이미지
+│  │     ... (각종 부품 이미지)
+│  │
+│  └─화면상세              # 'README.md'용 앱 스크린샷
+│        화면페이지1.png
+│        ...
+│
+├─backend                   # 핵심 백엔드 로직 (DB, API)
+│     db_manager.py         # 데이터베이스 연결 및 쿼리 실행 관리
+│     news_api.py           # Naver Search API 연동
+│     search_queries.py     # '상세 검색' 관련 SQL 쿼리
+│     stats_queries.py      # '분석 리포트' 통계 관련 SQL 쿼리
+│     __init__.py           # Python 패키지 선언 파일
+│
+├─data                      # 원본 데이터 및 전처리 스크립트
+│     4조 프로젝트 자동차 리콜현황 Datebase.xlsx # 가공된 엑셀 데이터
+│     python process_data.py  # (데이터 전처리 스크립트로 보입니다)
+│     한국교통안전공단_...csv # (원본 공공 데이터)
+│
+├─pages                     # Streamlit 멀티페이지 (각 서브 메뉴)
+│     1_🚀_프로젝트_소개.py
+│     2_🍋_상세_검색.py
+│     3_📊_분석_리포트.py
+│     4_🚗_부품_사전.py
+│     5_❓_FAQ & 문의.py
+│     6_✍️_회원가입.py       # (★ 사이드바 숨김 처리)
+│     7_⚙️_마이페이지.py     # (★ 사이드바 숨김 처리)
+│
+└─sql                       # 데이터베이스 스키마(DDL) 및 데이터 로더
+      4조 프로젝트 ...xlsx  # (DB 적재용 원본 데이터로 보입니다)
+      create_db.sql         # 1. 'lemondb' 데이터베이스 생성
+      create_tables.sql     # 2. 모든 테이블 스키마 생성
+      load_data_from_excel.py # 3. 엑셀 데이터를 MySQL에 적재
 ```
 
 ## 4. 💾 데이터 출처
